@@ -30,11 +30,11 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(bytes);
 
     // Temporary upload path
-    const uploadDir = path.join(process.cwd(), "tmp");
+    const uploadDir = "/tmp";
 
     // Create tmp directory if missing
     if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir);
+      fs.mkdirSync(uploadDir, { recursive: true });
     }
 
     const filePath = path.join(uploadDir, file.name);
